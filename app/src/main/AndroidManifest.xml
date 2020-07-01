@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.SET_WALLPAPER"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE"
         tools:node="remove"/>
@@ -32,6 +33,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3892731577848044~5110476517"/>
 
         <activity
             android:name="com.simplemobiletools.trinity.pro.activities.SplashActivity"

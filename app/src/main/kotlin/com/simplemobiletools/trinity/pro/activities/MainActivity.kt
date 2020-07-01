@@ -1,6 +1,7 @@
 package com.simplemobiletools.trinity.pro.activities
 
 import android.app.Activity
+import android.app.Dialog
 import android.app.SearchManager
 import android.content.ClipData
 import android.content.Context
@@ -14,12 +15,14 @@ import android.provider.MediaStore.Video
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.RelativeLayout
-import android.widget.Toast
+import android.view.Window
+import android.widget.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CreateNewFolderDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
@@ -91,7 +94,6 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         appLaunched(BuildConfig.APPLICATION_ID)
-
         if (savedInstanceState == null) {
             config.temporarilyShowHidden = false
             config.tempSkipDeleteConfirmation = false
@@ -99,6 +101,7 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
             checkRecycleBinItems()
             startNewPhotoFetcher()
         }
+        MobileAds.initialize(this) {}
 
         mIsPickImageIntent = isPickImageIntent(intent)
         mIsPickVideoIntent = isPickVideoIntent(intent)
@@ -268,15 +271,42 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
     override fun onBackPressed() {
         if (config.groupDirectSubfolders) {
             if (mCurrentPathPrefix.isEmpty()) {
+
                 super.onBackPressed()
             } else {
                 mOpenedSubfolders.removeAt(mOpenedSubfolders.size - 1)
                 mCurrentPathPrefix = mOpenedSubfolders.last()
                 setupAdapter(mDirs)
+
             }
+
         } else {
-            super.onBackPressed()
+
+//            val toast = Toast.makeText(applicationContext, "Hello 3", Toast.LENGTH_SHORT)
+//            toast.show()
+
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setCancelable(false)
+            dialog.setContentView(R.layout.back_dialog)
+            val mAdView  = dialog.findViewById(R.id.adView) as AdView
+            val adRequest = AdRequest.Builder().build()
+            mAdView.loadAd(adRequest)
+            val yesBtn = dialog.findViewById(R.id.text_yes) as TextView
+            val noBtn = dialog.findViewById(R.id.text_no) as TextView
+            yesBtn.setOnClickListener {
+                dialog.dismiss()
+                super.onBackPressed()
+            }
+            noBtn.setOnClickListener { dialog.dismiss() }
+            dialog.show()
+
+
+
+
         }
+//        val toast = Toast.makeText(applicationContext, "Hello 4", Toast.LENGTH_SHORT)
+//        toast.show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -286,8 +316,8 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
             menuInflater.inflate(R.menu.menu_main, menu)
             val useBin = config.useRecycleBin
             menu.apply {
-                findItem(R.id.increase_column_count).isVisible = config.viewTypeFolders == VIEW_TYPE_GRID && config.dirColumnCnt < MAX_COLUMN_COUNT
-                findItem(R.id.reduce_column_count).isVisible = config.viewTypeFolders == VIEW_TYPE_GRID && config.dirColumnCnt > 1
+//                findItem(R.id.increase_column_count).isVisible = config.viewTypeFolders == VIEW_TYPE_GRID && config.dirColumnCnt < MAX_COLUMN_COUNT
+//                findItem(R.id.reduce_column_count).isVisible = config.viewTypeFolders == VIEW_TYPE_GRID && config.dirColumnCnt > 1
                 findItem(R.id.hide_the_recycle_bin).isVisible = useBin && config.showRecycleBinAtFolders
                 findItem(R.id.show_the_recycle_bin).isVisible = useBin && !config.showRecycleBinAtFolders
                 setupSearch(this)
@@ -313,10 +343,10 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
             R.id.create_new_folder -> createNewFolder()
             R.id.show_the_recycle_bin -> toggleRecycleBin(true)
             R.id.hide_the_recycle_bin -> toggleRecycleBin(false)
-            R.id.increase_column_count -> increaseColumnCount()
-            R.id.reduce_column_count -> reduceColumnCount()
+//            R.id.increase_column_count -> increaseColumnCount()
+//            R.id.reduce_column_count -> reduceColumnCount()
             R.id.settings -> launchSettings()
-            R.id.about -> launchAbout()
+//            R.id.about -> launchAbout()
             else -> return super.onOptionsItemSelected(item)
         }
         return true
