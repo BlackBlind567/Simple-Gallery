@@ -2,7 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.simplemobiletools.gallery.pro"
+    package="com.simplemobiletools.trinity.pro"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -23,7 +23,7 @@
         android:required="false"/>
 
     <application
-        android:name=".App"
+        android:name="com.simplemobiletools.trinity.pro.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_launcher_name"
@@ -34,11 +34,11 @@
         tools:replace="android:label">
 
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.SplashActivity"
             android:theme="@style/SplashTheme"/>
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.MainActivity"
             android:resizeableActivity="true">
 
             <meta-data
@@ -73,8 +73,8 @@
         </activity>
 
         <activity
-            android:name=".activities.MediaActivity"
-            android:parentActivityName=".activities.MainActivity">
+            android:name="com.simplemobiletools.trinity.pro.activities.MediaActivity"
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MainActivity">
 
             <meta-data
                 android:name="android.app.default_searchable"
@@ -87,9 +87,9 @@
         </activity>
 
         <activity
-            android:name=".activities.SearchActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.SearchActivity"
             android:label="@string/search"
-            android:parentActivityName=".activities.MainActivity"
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MainActivity"
             android:resizeableActivity="true">
 
             <meta-data
@@ -102,9 +102,9 @@
         </activity>
 
         <activity
-            android:name=".activities.ViewPagerActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.ViewPagerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:parentActivityName=".activities.MediaActivity">
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MediaActivity">
 
             <intent-filter>
                 <action android:name="com.android.camera.action.REVIEW"/>
@@ -120,7 +120,7 @@
         <activity
             android:name="com.simplemobiletools.commons.activities.AboutActivity"
             android:label="@string/about"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MainActivity"/>
 
         <activity
             android:name="com.simplemobiletools.commons.activities.LicenseActivity"
@@ -130,7 +130,7 @@
         <activity
             android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
             android:label="@string/customize_colors"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.SettingsActivity"/>
 
         <activity
             android:name="com.simplemobiletools.commons.activities.FAQActivity"
@@ -138,48 +138,49 @@
             android:parentActivityName="com.simplemobiletools.commons.activities.AboutActivity"/>
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName=".activities.MainActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MainActivity"/>
 
         <activity
-            android:name=".activities.PhotoVideoActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.PhotoVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
 
         <activity
-            android:name=".activities.VideoPlayerActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.VideoPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:parentActivityName=".activities.MediaActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.MediaActivity"/>
 
         <activity
-            android:name=".activities.PanoramaPhotoActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/FullScreenTheme"/>
-
-        <activity
-            android:name=".activities.PanoramaVideoActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.PanoramaPhotoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/FullScreenTheme"/>
 
         <activity
-            android:name=".activities.IncludedFoldersActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.PanoramaVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/FullScreenTheme"/>
+
+        <activity
+            android:name="com.simplemobiletools.trinity.pro.activities.IncludedFoldersActivity"
             android:label="@string/include_folders"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.SettingsActivity"/>
 
         <activity
-            android:name=".activities.ExcludedFoldersActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.ExcludedFoldersActivity"
             android:label="@string/excluded_folders"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.SettingsActivity"/>
 
         <activity
-            android:name=".activities.HiddenFoldersActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.HiddenFoldersActivity"
             android:label="@string/hidden_folders"
-            android:parentActivityName=".activities.SettingsActivity"/>
+            android:parentActivityName="com.simplemobiletools.trinity.pro.activities.SettingsActivity"/>
 
         <activity
-            android:name=".activities.PhotoActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.PhotoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
-            <intent-filter>
+            <intent-filter
+                tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.BROWSABLE"/>
@@ -190,9 +191,9 @@
         </activity>
 
         <activity
-            android:name=".activities.VideoActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
-            <intent-filter>
+            <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.BROWSABLE"/>
@@ -203,7 +204,7 @@
         </activity>
 
         <activity
-            android:name=".activities.EditActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.EditActivity"
             android:label="@string/editor">
 
             <intent-filter
@@ -230,7 +231,7 @@
         </activity>
 
         <activity
-            android:name=".activities.SetWallpaperActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.SetWallpaperActivity"
             android:label="@string/simple_wallpaper">
             <intent-filter>
                 <action android:name="android.intent.action.ATTACH_DATA"/>
@@ -248,7 +249,7 @@
         </activity>
 
         <activity
-            android:name=".activities.WidgetConfigureActivity"
+            android:name="com.simplemobiletools.trinity.pro.activities.WidgetConfigureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MyWidgetConfigTheme">
             <intent-filter>
@@ -267,7 +268,7 @@
         </provider>
 
         <receiver
-            android:name=".receivers.RefreshMediaReceiver"
+            android:name="com.simplemobiletools.trinity.pro.receivers.RefreshMediaReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.simplemobiletools.REFRESH_MEDIA"/>
@@ -275,7 +276,7 @@
         </receiver>
 
         <receiver
-            android:name=".helpers.MyWidgetProvider"
+            android:name="com.simplemobiletools.trinity.pro.helpers.MyWidgetProvider"
             android:icon="@drawable/img_widget_preview">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
@@ -286,7 +287,7 @@
                 android:resource="@xml/widget_info"/>
         </receiver>
 
-        <receiver android:name=".receivers.BootCompletedReceiver"
+        <receiver android:name="com.simplemobiletools.trinity.pro.receivers.BootCompletedReceiver"
             android:exported="true"
             android:enabled="true">
             <intent-filter>
@@ -296,7 +297,7 @@
         </receiver>
 
         <service
-            android:name=".jobs.NewPhotoFetcher"
+            android:name="com.simplemobiletools.trinity.pro.jobs.NewPhotoFetcher"
             android:exported="true"
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
@@ -305,7 +306,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_red"
             android:roundIcon="@mipmap/ic_launcher_red"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -318,7 +319,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_pink"
             android:roundIcon="@mipmap/ic_launcher_pink"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -331,7 +332,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_purple"
             android:roundIcon="@mipmap/ic_launcher_purple"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -344,7 +345,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_deep_purple"
             android:roundIcon="@mipmap/ic_launcher_deep_purple"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -357,7 +358,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_indigo"
             android:roundIcon="@mipmap/ic_launcher_indigo"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -370,7 +371,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_blue"
             android:roundIcon="@mipmap/ic_launcher_blue"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -383,7 +384,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_light_blue"
             android:roundIcon="@mipmap/ic_launcher_light_blue"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -396,7 +397,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_cyan"
             android:roundIcon="@mipmap/ic_launcher_cyan"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -409,7 +410,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_teal"
             android:roundIcon="@mipmap/ic_launcher_teal"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -422,7 +423,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_green"
             android:roundIcon="@mipmap/ic_launcher_green"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -435,7 +436,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_light_green"
             android:roundIcon="@mipmap/ic_launcher_light_green"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -448,7 +449,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_lime"
             android:roundIcon="@mipmap/ic_launcher_lime"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -461,7 +462,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_yellow"
             android:roundIcon="@mipmap/ic_launcher_yellow"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -474,7 +475,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_amber"
             android:roundIcon="@mipmap/ic_launcher_amber"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -487,7 +488,7 @@
             android:enabled="true"
             android:icon="@mipmap/ic_launcher"
             android:roundIcon="@mipmap/ic_launcher"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -499,7 +500,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_deep_orange"
             android:roundIcon="@mipmap/ic_launcher_deep_orange"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -512,7 +513,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_brown"
             android:roundIcon="@mipmap/ic_launcher_brown"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -525,7 +526,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_blue_grey"
             android:roundIcon="@mipmap/ic_launcher_blue_grey"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -538,7 +539,7 @@
             android:enabled="false"
             android:icon="@mipmap/ic_launcher_grey_black"
             android:roundIcon="@mipmap/ic_launcher_grey_black"
-            android:targetActivity=".activities.SplashActivity">
+            android:targetActivity="com.simplemobiletools.trinity.pro.activities.SplashActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
