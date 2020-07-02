@@ -20,9 +20,7 @@ import android.widget.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.dialogs.CreateNewFolderDialog
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
@@ -270,6 +268,8 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
 
     override fun onBackPressed() {
         if (config.groupDirectSubfolders) {
+            val toast = Toast.makeText(applicationContext, "Hello 3", Toast.LENGTH_SHORT)
+            toast.show()
             if (mCurrentPathPrefix.isEmpty()) {
 
                 super.onBackPressed()
@@ -282,8 +282,9 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
 
         } else {
 
-//            val toast = Toast.makeText(applicationContext, "Hello 3", Toast.LENGTH_SHORT)
-//            toast.show()
+            val toast = Toast.makeText(applicationContext, "back button clicked", Toast.LENGTH_SHORT)
+            toast.show()
+
 
             val dialog = Dialog(this)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -299,10 +300,37 @@ class MainActivity : SimpleActivity(), DirectoryOperationsListener {
                 super.onBackPressed()
             }
             noBtn.setOnClickListener { dialog.dismiss() }
-            dialog.show()
 
 
 
+            mAdView.adListener = object: AdListener() {
+                override fun onAdLoaded() {
+                    // Code to be executed when an ad finishes loading.
+                    dialog.show()
+                }
+
+                override fun onAdFailedToLoad(errorCode : Int) {
+                    // Code to be executed when an ad request fails.
+                }
+
+                override fun onAdOpened() {
+                    // Code to be executed when an ad opens an overlay that
+                    // covers the screen.
+                }
+
+                override fun onAdClicked() {
+                    // Code to be executed when the user clicks on an ad.
+                }
+
+                override fun onAdLeftApplication() {
+                    // Code to be executed when the user has left the app.
+                }
+
+                override fun onAdClosed() {
+                    // Code to be executed when the user is about to return
+                    // to the app after tapping on an ad.
+                }
+            }
 
         }
 //        val toast = Toast.makeText(applicationContext, "Hello 4", Toast.LENGTH_SHORT)

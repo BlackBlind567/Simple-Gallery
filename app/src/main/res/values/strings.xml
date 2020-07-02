@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Gallery</string>
+    <string name="app_name">Gallery</string>
     <string name="app_launcher_name">Gallery</string>
     <string name="edit">Edit</string>
     <string name="open_camera">Open camera</string>
@@ -381,4 +381,9 @@
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
     -->
+    <string name="add_app_id" translatable="false">ca-app-pub-3892731577848044~5110476517</string>
+    <string name="add_unit_id_test" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="add_unit_id" translatable="false">ca-app-pub-3892731577848044~5110476517</string>
+
+
 </resources>

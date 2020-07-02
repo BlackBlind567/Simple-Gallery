@@ -380,4 +380,9 @@
         Haven't found some strings? There's more at
         https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
     -->
+
+
+    <string name="add_app_id">ca-app-pub-3892731577848044~5110476517</string>
+    <string name="add_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="add_unit_id">ca-app-pub-3892731577848044~5110476517</string>
 </resources>

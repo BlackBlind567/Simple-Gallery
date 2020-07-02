@@ -22,6 +22,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore.Images
 import android.text.Html
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -37,6 +38,10 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.simplemobiletools.commons.dialogs.PropertiesDialog
 import com.simplemobiletools.commons.dialogs.RenameItemDialog
 import com.simplemobiletools.commons.extensions.*
@@ -66,6 +71,8 @@ import java.util.*
 class ViewPagerActivity : SimpleActivity(), ViewPager.OnPageChangeListener, ViewPagerFragment.FragmentListener {
     private val REQUEST_VIEW_VIDEO = 1
 
+    private lateinit var mInterstitialAd: InterstitialAd
+
     private var mPath = ""
     private var mDirectory = ""
     private var mIsFullScreen = false
@@ -90,6 +97,9 @@ class ViewPagerActivity : SimpleActivity(), ViewPager.OnPageChangeListener, View
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_medium)
 
+        Log.v("Launch", "index2 ")
+
+
         top_shadow.layoutParams.height = statusBarHeight + actionBarHeight
         checkNotchSupport()
         (MediaActivity.mMedia.clone() as ArrayList<ThumbnailItem>).filter { it is Medium }.mapTo(mMediaFiles) { it as Medium }
@@ -104,6 +114,27 @@ class ViewPagerActivity : SimpleActivity(), ViewPager.OnPageChangeListener, View
         }
 
         initFavorites()
+
+        MobileAds.initialize(this) {}
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3892731577848044/3092432237"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+//        if (mInterstitialAd.isLoaded) {
+//            mInterstitialAd.show()
+//        } else {
+//            Toast.makeText(this, "Ad wasn't loaded.", Toast.LENGTH_SHORT).show()
+////            startGame()
+//        }
+
+
+        mInterstitialAd.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                mInterstitialAd.show()
+
+            }
+
+        }
     }
 
     override fun onResume() {
